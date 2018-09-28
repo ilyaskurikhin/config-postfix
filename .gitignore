@@ -1,1 +1,5 @@
 certs/*
+*.db
+*.proto
+*.rpmnew
+pgsql/*
