@@ -3,3 +3,5 @@ certs/*
 *.proto
 *.rpmnew
 pgsql/*
+dynamicmaps.cf.d/*
+postfix-files.d/*
