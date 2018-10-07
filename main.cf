@@ -300,8 +300,28 @@ maximal_backoff_time = 8000s
 # You MUST specify $myhostname at the start of the text. That is an
 # RFC requirement. Postfix itself does not care.
 #
+smtpd_delay_reject = yes
 smtpd_banner = $myhostname ESMTP $mail_name
 smtpd_helo_required = yes
+smtpd_helo_restrictions = 
+    permit_mynetworks,
+    reject_non_fqdn_hostname,
+    reject_invalid_hostname,
+    permit
+smtpd_sender_restrictions = 
+    permit_sasl_authenticated,
+    permit_mynetworks,
+    reject_non_fqdn_sender,
+    reject_unknown_sender_domain,
+    permit
+smtpd_recipient_restrictions = 
+    reject_unauth_pipelining,
+    reject_non_fqdn_recipient,
+    reject_unknown_recipient_domain,
+    permit_mynetworks,
+    permit_sasl_authenticated,
+    reject_unauth_destination,
+    permit
 smtpd_tls_key_file = /etc/postfix/certs/privkey.pem
 smtpd_tls_cert_file = /etc/postfix/certs/fullchain.pem
 smtp_tls_security_level = may
