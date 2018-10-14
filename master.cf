@@ -135,6 +135,7 @@ amavis     unix  -       -       n       -       2       lmtp
     -o max_use=20
 127.0.0.1:10025 inet n   -       n       -       -       smtpd
     -o content_filter=
+    -o smtpd_delay_rejection=no
     -o smtpd_client_restrictions=permit_mynetworks.reject
     -o smtpd_helo_restrictions=
     -o smtpd_sender_restrictions=
